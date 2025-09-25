@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export function Header() {
               width={200}
               height={50}
               sizes="200px"
-              unoptimized
+              priority
               className="h-12 w-auto"
             />
           </Link>
@@ -54,7 +55,7 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs">
+            <SheetContent side="right" className="w-full max-w-xs" aria-label="Mobile navigation menu">
               <div className="flex flex-col gap-6 pt-6">
                 <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsMenuOpen(false)}>
                   <Image
@@ -63,21 +64,29 @@ export function Header() {
                     width={200}
                     height={50}
                     sizes="200px"
-                    unoptimized
                     className="h-12 w-auto"
                   />
                 </Link>
-                <nav className="grid gap-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className="text-lg font-medium text-foreground/80 transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <nav>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="main-nav">
+                      <AccordionTrigger className="text-base">Navigate</AccordionTrigger>
+                      <AccordionContent>
+                        <div className="grid gap-3">
+                          {navLinks.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              onClick={() => setIsMenuOpen(false)}
+                              className="text-base font-medium text-foreground/80 transition-colors hover:text-foreground"
+                            >
+                              {link.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 </nav>
                 <Button asChild variant="secondary">
                   <Link href="/quote" onClick={() => setIsMenuOpen(false)}>Get Your Free Quote</Link>

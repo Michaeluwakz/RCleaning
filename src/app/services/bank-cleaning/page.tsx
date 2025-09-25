@@ -1,31 +1,27 @@
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
 
-export default function RetailSpaceCleaningPage() {
+export default function BankCleaningPage() {
   const features = [
-    'Impeccable cleaning of floors, windows, and shelving to attract customers.',
-    'Sanitization of fitting rooms, restrooms, and high-traffic areas.',
-    'Flexible scheduling to avoid disruption to your business hours.',
-    'Specialized care for all types of flooring and surfaces.',
-    'A clean, inviting storefront that enhances your brand image.',
+    'Secure cleaning protocols that respect sensitive financial environments.',
+    'After-hours cleaning to avoid disrupting banking operations.',
+    'Disinfection of high-touch areas including ATMs, counters, and waiting areas.',
+    'Professional appearance maintenance for customer-facing areas.',
+    'Compliance with financial industry cleanliness standards.',
   ];
 
   return (
     <div className="bg-background">
       <header className="relative h-72 md:h-96">
-        <Image
-          src="https://i.ibb.co/fV99fkWP/image.png"
-          alt="Modern retail store"
-          data-ai-hint="retail interior"
-          fill
-          sizes="100vw"
-          className="object-cover"
+        <img
+          src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1000&auto=format&fit=crop"
+          alt="Clean bank interior"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-wider text-center">
-            Retail Space Cleaning
+            Bank Cleaning
           </h1>
         </div>
       </header>
@@ -34,9 +30,9 @@ export default function RetailSpaceCleaningPage() {
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center md:text-left">Make a Lasting First Impression</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center md:text-left">Professional Banking Environment Maintenance</h2>
               <p className="text-base md:text-lg text-foreground/80 text-center md:text-left">
-                The cleanliness of your retail space is a direct reflection of your brand. A spotless, well-maintained store not only attracts customers but also encourages them to stay longer and return. Reliable Shine Cleaning provides comprehensive retail cleaning services that ensure your space is always customer-ready. From shining floors to dust-free displays, we create a shopping environment that radiates quality and care.
+                At Reliable Shine Cleaning, we understand the importance of maintaining a pristine, professional appearance in financial institutions. Our specialized bank cleaning services ensure that your facility maintains the highest standards of cleanliness and hygiene, creating a welcoming environment that builds customer trust and confidence. We work discreetly and efficiently to maintain the professional image your institution requires.
               </p>
               <div className="space-y-4">
                 {features.map((feature, index) => (
@@ -48,14 +44,9 @@ export default function RetailSpaceCleaningPage() {
               </div>
             </div>
             <div className="flex justify-center">
-               <Image
-                src="https://i.ibb.co/VWS4y1jM/image.png"
-                alt="Retail space cleaning"
-                data-ai-hint="shopping mall"
-                width={500}
-                height={500}
-                sizes="(min-width: 768px) 500px, 100vw"
-                unoptimized
+               <img 
+                src="https://i.ibb.co/hFfP2jTv/image.png" 
+                alt="Bank cleaning in action" 
                 className="w-full h-auto rounded-lg object-cover shadow-lg"
               />
             </div>

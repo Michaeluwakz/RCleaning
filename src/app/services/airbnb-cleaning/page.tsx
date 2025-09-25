@@ -14,7 +14,7 @@ export default function AirbnbCleaningPage() {
 
   return (
     <div className="bg-background">
-      <header className="relative h-96">
+      <header className="relative h-72 md:h-96">
         <Image
           src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=1600&auto=format&fit=crop"
           alt="A welcoming and clean Airbnb"
@@ -24,7 +24,7 @@ export default function AirbnbCleaningPage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <h1 className="text-5xl font-bold text-white uppercase tracking-wider">
+          <h1 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-wider text-center">
             Airbnb Cleaning
           </h1>
         </div>
@@ -34,8 +34,8 @@ export default function AirbnbCleaningPage() {
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-primary">Five-Star Cleanliness for Every Guest</h2>
-              <p className="text-lg text-foreground/80">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center md:text-left">Five-Star Cleanliness for Every Guest</h2>
+              <p className="text-base md:text-lg text-foreground/80 text-center md:text-left">
                 For Airbnb hosts, cleanliness is paramount to success. Positive reviews depend on providing a spotless and welcoming space for every guest. Reliable Shine Cleaning offers specialized Airbnb cleaning services designed for fast turnovers and impeccable results. We ensure your property is perfectly clean, sanitized, and restocked, ready to impress your next guest and earn you that coveted 5-star rating.
               </p>
               <div className="space-y-4">

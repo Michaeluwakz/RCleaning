@@ -3,29 +3,29 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { CheckCircle } from 'lucide-react';
 
-export default function RetailSpaceCleaningPage() {
+export default function SchoolCleaningPage() {
   const features = [
-    'Impeccable cleaning of floors, windows, and shelving to attract customers.',
-    'Sanitization of fitting rooms, restrooms, and high-traffic areas.',
-    'Flexible scheduling to avoid disruption to your business hours.',
-    'Specialized care for all types of flooring and surfaces.',
-    'A clean, inviting storefront that enhances your brand image.',
+    'Safe, non-toxic cleaning products suitable for educational environments.',
+    'Comprehensive cleaning of classrooms, hallways, and common areas.',
+    'Sanitization of high-touch surfaces to prevent illness spread.',
+    'Specialized cleaning for science labs, gymnasiums, and cafeterias.',
+    'Flexible scheduling to work around school hours and activities.',
   ];
 
   return (
     <div className="bg-background">
       <header className="relative h-72 md:h-96">
         <Image
-          src="https://i.ibb.co/fV99fkWP/image.png"
-          alt="Modern retail store"
-          data-ai-hint="retail interior"
+          src="https://images.unsplash.com/photo-1523050854058-8df90110cfe1?q=80&w=1000&auto=format&fit=crop"
+          alt="Clean school interior"
+          data-ai-hint="school interior"
           fill
           sizes="100vw"
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-wider text-center">
-            Retail Space Cleaning
+            School Cleaning
           </h1>
         </div>
       </header>
@@ -34,9 +34,9 @@ export default function RetailSpaceCleaningPage() {
         <div className="container px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center md:text-left">Make a Lasting First Impression</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-primary text-center md:text-left">Creating Healthy Learning Environments</h2>
               <p className="text-base md:text-lg text-foreground/80 text-center md:text-left">
-                The cleanliness of your retail space is a direct reflection of your brand. A spotless, well-maintained store not only attracts customers but also encourages them to stay longer and return. Reliable Shine Cleaning provides comprehensive retail cleaning services that ensure your space is always customer-ready. From shining floors to dust-free displays, we create a shopping environment that radiates quality and care.
+                At Reliable Shine Cleaning, we recognize that clean, healthy schools are essential for student success and staff well-being. Our comprehensive school cleaning services are designed to maintain the highest standards of cleanliness and hygiene in educational facilities. We use safe, effective cleaning methods that create optimal learning environments while protecting the health of students, teachers, and staff.
               </p>
               <div className="space-y-4">
                 {features.map((feature, index) => (
@@ -49,13 +49,12 @@ export default function RetailSpaceCleaningPage() {
             </div>
             <div className="flex justify-center">
                <Image
-                src="https://i.ibb.co/VWS4y1jM/image.png"
-                alt="Retail space cleaning"
-                data-ai-hint="shopping mall"
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1000&auto=format&fit=crop"
+                alt="School cleaning in action"
+                data-ai-hint="cleaning supplies"
                 width={500}
                 height={500}
                 sizes="(min-width: 768px) 500px, 100vw"
-                unoptimized
                 className="w-full h-auto rounded-lg object-cover shadow-lg"
               />
             </div>
