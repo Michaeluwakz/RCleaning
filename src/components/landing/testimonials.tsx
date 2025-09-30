@@ -2,6 +2,8 @@
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Star, ShieldCheck, Sparkle } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 const testimonials = [
   {
@@ -21,6 +23,9 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const plugins = typeof window !== 'undefined'
+    ? [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
+    : [];
   return (
     <section id="about" className="w-full py-10 md:py-20 lg:py-32 bg-muted">
       <div className="container px-4 sm:px-6">
@@ -32,32 +37,68 @@ export function Testimonials() {
             We take pride in our work, and our clients' satisfaction is our greatest reward.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-5 sm:gap-8 md:grid-cols-2 lg:gap-12">
+        {/* Mobile: autoplay carousel */}
+        <div className="md:hidden">
+          <Carousel opts={{ loop: true, align: 'start' }} plugins={plugins}>
+            <CarouselContent>
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem key={index} className="basis-full">
+                  <Card className="flex flex-col">
+                    <CardHeader className="flex flex-col items-center gap-3 sm:gap-4 pb-3 sm:pb-4 sm:flex-row">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center border">
+                        {testimonial.icon === 'shield' && <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                        {testimonial.icon === 'sparkle' && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                        {!testimonial.icon && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                      </div>
+                      <div className="text-center sm:text-left">
+                        <h3 className="text-base sm:text-lg font-bold">{testimonial.name}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.title}</p>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex flex-col flex-1 pt-2 sm:pt-4 items-center sm:items-start">
+                      <div className="flex mb-2">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      <blockquote className="italic text-foreground/80 border-l-4 border-primary pl-3 sm:pl-4 flex-1 text-sm sm:text-base text-center sm:text-left">
+                        &quot;{testimonial.quote}&quot;
+                      </blockquote>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Desktop/Tablet: static grid */}
+        <div className="hidden md:grid grid-cols-1 gap-5 sm:gap-8 md:grid-cols-2 lg:gap-12">
           {testimonials.map((testimonial, index) => (
-          <Card key={index} className="flex flex-col">
-            <CardHeader className="flex flex-col items-center gap-3 sm:gap-4 pb-3 sm:pb-4 sm:flex-row">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center border">
-                {testimonial.icon === 'shield' && <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
-                {testimonial.icon === 'sparkle' && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
-                {!testimonial.icon && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
-              </div>
-              <div className="text-center sm:text-left">
-                <h3 className="text-base sm:text-lg font-bold">{testimonial.name}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.title}</p>
-              </div>
-            </CardHeader>
-            <CardContent className="flex flex-col flex-1 pt-2 sm:pt-4 items-center sm:items-start">
-              <div className="flex mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
-                ))}
-              </div>
-              <blockquote className="italic text-foreground/80 border-l-4 border-primary pl-3 sm:pl-4 flex-1 text-sm sm:text-base text-center sm:text-left">
-                &quot;{testimonial.quote}&quot;
-              </blockquote>
-            </CardContent>
-          </Card>
-        ))}
+            <Card key={index} className="flex flex-col">
+              <CardHeader className="flex flex-col items-center gap-3 sm:gap-4 pb-3 sm:pb-4 sm:flex-row">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-primary/10 flex items-center justify-center border">
+                  {testimonial.icon === 'shield' && <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                  {testimonial.icon === 'sparkle' && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                  {!testimonial.icon && <Sparkle className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />}
+                </div>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-base sm:text-lg font-bold">{testimonial.name}</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.title}</p>
+                </div>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-1 pt-2 sm:pt-4 items-center sm:items-start">
+                <div className="flex mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="italic text-foreground/80 border-l-4 border-primary pl-3 sm:pl-4 flex-1 text-sm sm:text-base text-center sm:text-left">
+                  &quot;{testimonial.quote}&quot;
+                </blockquote>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

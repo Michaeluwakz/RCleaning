@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -8,6 +9,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Building, ShoppingBag, ShieldCheck, Utensils, Martini, Home, Banknote, GraduationCap } from 'lucide-react';
 import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 const services = [
   {
@@ -62,6 +65,9 @@ const services = [
 ];
 
 export function Services() {
+  const plugins = typeof window !== 'undefined'
+    ? [Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })]
+    : [];
   return (
     <section id="services" className="w-full py-10 md:py-20 lg:py-32 bg-card">
       <div className="container px-4 sm:px-6">
@@ -70,10 +76,41 @@ export function Services() {
             HERE'S OUR SERVICES
           </h2>
         </div>
-        <div className="mx-auto grid max-w-5xl items-stretch justify-center gap-5 sm:gap-8 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8 sm:mt-12">
+        {/* Mobile: autoplay carousel */}
+        <div className="md:hidden">
+          <Carousel
+            opts={{ loop: true, align: 'start' }}
+            plugins={plugins}
+            className="mx-auto max-w-5xl mt-8 sm:mt-12"
+          >
+            <CarouselContent>
+              {services.map((service, index) => (
+                <CarouselItem key={index} className="basis-full sm:basis-1/2">
+                  <Card className="h-full transition-transform duration-300 ease-in-out text-center flex flex-col">
+                    <CardHeader className="pb-3 sm:pb-4 items-center">
+                      <div className="mb-3 sm:mb-4">{service.icon}</div>
+                      <CardTitle className="text-xl sm:text-2xl">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-col items-center flex-1">
+                      <CardDescription className="text-sm sm:text-base min-h-0 sm:min-h-[100px] flex-1">
+                        {service.description}
+                      </CardDescription>
+                      <Button variant="outline" className="mt-4 w-full sm:w-auto" asChild>
+                        <Link href={service.href}>Learn More</Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Desktop/Tablet: static list, 3 per row */}
+        <div className="hidden md:grid mx-auto max-w-5xl mt-8 sm:mt-12 grid-cols-3 gap-8 md:gap-12 items-stretch justify-center">
           {services.map((service, index) => (
             <Card
-              key={index}
+              key={`static-${index}`}
               className="h-full transition-transform duration-300 ease-in-out lg:hover:-translate-y-2 lg:hover:shadow-lg text-center flex flex-col"
             >
               <CardHeader className="pb-3 sm:pb-4 items-center">

@@ -5,7 +5,7 @@ export default function QuotePage() {
     <div className="bg-background text-foreground">
       <header className="bg-white py-12 md:py-20 text-center">
         <div className="container px-4 md:px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary uppercase tracking-wider">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary uppercase tracking-wider">
             OUR PRICES
           </h1>
         </div>
@@ -13,8 +13,8 @@ export default function QuotePage() {
 
       <main className="py-16 md:py-24">
         <div className="container px-4 md:px-6">
-          <div className="max-w-4xl mx-auto text-lg">
-            <h2 className="text-3xl font-bold text-primary text-center mb-8">
+          <div className="max-w-4xl mx-auto text-base md:text-lg">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary text-center mb-8">
               REQUEST A CUSTOMIZED QUOTE
             </h2>
             <p className="mb-6">
@@ -40,7 +40,7 @@ export default function QuotePage() {
               . Our friendly representatives are available to discuss your
               cleaning needs in detail and provide a free consultation.
             </p>
-            <p className="font-semibold text-center mt-12">
+            <p className="font-semibold text-center mt-12 text-sm md:text-base">
               Take the first step towards a cleaner, healthier, and more
               productive workspace. Contact us today!
             </p>
